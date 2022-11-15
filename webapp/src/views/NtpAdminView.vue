@@ -8,13 +8,10 @@
             <div class="card">
                 <div class="card-header text-bg-primary">NTP Configuration</div>
                 <div class="card-body">
-                    <div class="row mb-3">
-                        <label for="inputNtpServer" class="col-sm-2 col-form-label">Time Server:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputNtpServer" maxlength="32"
-                                placeholder="Time Server" v-model="ntpConfigList.ntp_server" />
-                        </div>
-                    </div>
+                    <InputElement label="Time Server"
+                                  v-model="ntpConfigList.ntp_server"
+                                  type="text" maxlength="32"
+                                  placeholder="Time Server"/>
 
                     <div class="row mb-3">
                         <label for="inputTimezone" class="col-sm-2 col-form-label">Timezone:</label>
@@ -28,13 +25,10 @@
                         </div>
                     </div>
 
-                    <div class="row mb-3">
-                        <label for="inputTimezoneConfig" class="col-sm-2 col-form-label">Timezone Config:</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputTimezoneConfig" maxlength="32"
-                                placeholder="Timezone" v-model="ntpConfigList.ntp_timezone" disabled />
-                        </div>
-                    </div>
+                    <InputElement label="Timezone Config"
+                                  v-model="ntpConfigList.ntp_timezone"
+                                  type="text" maxlength="32"
+                                  placeholder="Timezone" disabled/>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary mb-3">Save</button>
@@ -43,18 +37,14 @@
         <div class="card">
             <div class="card-header text-bg-primary">Manual Time Synchronization</div>
             <div class="card-body">
-                <div class="row mb-3">
-                    <label for="currentMcuTime" class="col-sm-2 col-form-label">Current OpenDTU Time:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="currentMcuTime" v-model="mcuTime" disabled />
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="currentLocalTime" class="col-sm-2 col-form-label">Current Local Time:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="currentLocalTime" v-model="localTime" disabled />
-                    </div>
-                </div>
+                <InputElement label="Current OpenDTU Time"
+                              v-model="mcuTime"
+                              type="text" disabled/>
+
+                <InputElement label="Current Local Time"
+                              v-model="localTime"
+                              type="text" disabled/>
+
                 <div class="text-center mb-3">
                     <button type="button" class="btn btn-danger" @click="setCurrentTime()"
                         title="Synchronize Time">Synchronize Time
@@ -75,6 +65,7 @@
 import { defineComponent } from 'vue';
 import BasePage from '@/components/BasePage.vue';
 import BootstrapAlert from "@/components/BootstrapAlert.vue";
+import InputElement from '@/components/InputElement.vue';
 import { handleResponse, authHeader } from '@/utils/authentication';
 import type { NtpConfig } from "@/types/NtpConfig";
 
@@ -82,6 +73,7 @@ export default defineComponent({
     components: {
         BasePage,
         BootstrapAlert,
+        InputElement
     },
     data() {
         return {
