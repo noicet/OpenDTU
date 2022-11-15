@@ -2,7 +2,7 @@ export interface ValueObject {
     v: number; // value
     u: string; // unit
     d: number; // digits
-};
+}
 
 export interface InverterStatistics {
     Power?: ValueObject;
@@ -29,13 +29,13 @@ export interface Inverter {
     limit_absolute: number;
     events: number;
     [key: number]: InverterStatistics;
-};
+}
 
 export interface Total {
     Power: ValueObject;
     YieldDay: ValueObject;
     YieldTotal: ValueObject;
-};
+}
 
 export interface LiveData {
     inverters: Inverter[];

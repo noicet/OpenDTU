@@ -2,7 +2,7 @@ import type { Emitter, EventType } from "mitt";
 
 export function authHeader(): Headers {
     // return authorization header with basic auth credentials
-    let user = JSON.parse(localStorage.getItem('user') || "");
+    const user = JSON.parse(localStorage.getItem('user') || "");
 
     if (user && user.authdata) {
         const headers = new Headers();
